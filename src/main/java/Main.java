@@ -8,13 +8,11 @@ public class Main {
 
         System.out.println("Hello World!");
 
-        System.loadLibrary("Native");
 
-
-        SerialPort serialPort = new SerialPort("/dev/ttyUSB0", 600, Parity.NONE, 8);
-        serialPort.Open();
-        System.out.println("Test serial port is opened : " + serialPort.isOpened());
-        System.out.println();
+//        SerialPort serialPort = new SerialPort("/dev/ttyUSB0", 600, Parity.NONE, 8);
+//        serialPort.Open();
+//        System.out.println("Test serial port is opened : " + serialPort.isOpened());
+//        System.out.println();
 
 
         ModbusClient modbusClient = new ModbusClient();
