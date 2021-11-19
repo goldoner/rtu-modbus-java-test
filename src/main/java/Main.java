@@ -1,4 +1,3 @@
-import ModbusRTU.ModbusRTU;
 import de.re.easymodbus.modbusclient.ModbusClient;
 import de.re.jserial.SerialPort;
 import de.re.jserial.datatypes.Parity;
@@ -8,6 +7,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         System.out.println("Hello World!");
+
+        System.loadLibrary("Native");
 
 
         SerialPort serialPort = new SerialPort("/dev/ttyUSB0", 600, Parity.NONE, 8);
