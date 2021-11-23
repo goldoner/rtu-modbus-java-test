@@ -16,11 +16,11 @@ public class Main {
 
 
        // SerialPort comPort = SerialPort.getCommPorts()[0];
-        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB0");
+        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB1");
 
         // 9600 19200 38400
 
-        comPort.setBaudRate(19200);
+        comPort.setBaudRate(600);
         comPort.setParity(SerialPort.NO_PARITY);
         comPort.setNumDataBits(8);
         comPort.setNumStopBits(2);
