@@ -20,10 +20,10 @@ public class Main {
 
         // 9600 19200 38400
 
-        comPort.setBaudRate(19200);
+        comPort.setBaudRate(9600);
         comPort.setParity(SerialPort.NO_PARITY);
         comPort.setNumDataBits(8);
-        comPort.setNumStopBits(2);
+        comPort.setNumStopBits(1);
 
 
         comPort.openPort();
