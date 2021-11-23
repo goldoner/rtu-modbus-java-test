@@ -24,18 +24,34 @@ public class Main {
         comPort.setParity(SerialPort.NO_PARITY);
         comPort.setNumDataBits(8);
         comPort.setNumStopBits(2);
+
+
         comPort.openPort();
-        System.out.println("Is port opened: " + comPort.isOpen());
-         comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
-        InputStream in = comPort.getInputStream();
         try {
-            for (int j = 0; j < 1000; ++j)
-                System.out.print((char) in.read());
-            in.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            while (true)
+            {
+                while (comPort.bytesAvailable() == 0)
+                    Thread.sleep(20);
+
+                byte[] readBuffer = new byte[comPort.bytesAvailable()];
+                int numRead = comPort.readBytes(readBuffer, readBuffer.length);
+                System.out.println("Read " + numRead + " bytes.");
+            }
+        } catch (Exception e) { e.printStackTrace(); }
         comPort.closePort();
+
+//        comPort.openPort();
+//        System.out.println("Is port opened: " + comPort.isOpen());
+//         comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
+//        InputStream in = comPort.getInputStream();
+//        try {
+//            for (int j = 0; j < 1000; ++j)
+//                System.out.print((char) in.read());
+//            in.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        comPort.closePort();
 
 //        SerialPort serialPort = new SerialPort("/dev/ttyUSB0", 600, Parity.NONE, 8);
 //        serialPort.Open();
