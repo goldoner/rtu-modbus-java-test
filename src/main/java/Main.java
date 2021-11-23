@@ -1,5 +1,6 @@
 import com.fazecast.jSerialComm.SerialPort;
 
+import java.io.InputStream;
 import java.util.Arrays;
 
 public class Main {
@@ -8,8 +9,31 @@ public class Main {
 
         System.out.println("Hello World!");
 
+        // /dev/ttyUSB0
+
 
         System.out.println(Arrays.toString(Arrays.stream(SerialPort.getCommPorts()).toArray()));
+
+
+       // SerialPort comPort = SerialPort.getCommPorts()[0];
+        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB0");
+
+
+        comPort.setBaudRate(600);
+        comPort.setParity(SerialPort.NO_PARITY);
+        comPort.setNumDataBits(8);
+        comPort.openPort();
+        System.out.println("Is port opened: " + comPort.isOpen());
+         comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
+        InputStream in = comPort.getInputStream();
+        try {
+            for (int j = 0; j < 1000; ++j)
+                System.out.print((char) in.read());
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        comPort.closePort();
 
 //        SerialPort serialPort = new SerialPort("/dev/ttyUSB0", 600, Parity.NONE, 8);
 //        serialPort.Open();
