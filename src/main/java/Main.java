@@ -20,19 +20,17 @@ public class Main {
 
         // 9600 19200 38400
 
-        comPort.setBaudRate(9600);
-        comPort.setParity(SerialPort.NO_PARITY);
-        comPort.setNumDataBits(8);
-        comPort.setNumStopBits(1);
-
 
         comPort.openPort();
         System.out.println("Is port opened: " + comPort.isOpen());
         try {
             while (true)
             {
-                while (comPort.bytesAvailable() == 0)
+                while (comPort.bytesAvailable() == 0) {
                     Thread.sleep(20);
+                    System.out.println("Nopr");
+                    Thread.sleep(20);
+                }
 
                 byte[] readBuffer = new byte[comPort.bytesAvailable()];
                 int numRead = comPort.readBytes(readBuffer, readBuffer.length);
