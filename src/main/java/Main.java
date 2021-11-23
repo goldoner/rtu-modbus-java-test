@@ -19,12 +19,11 @@ public class Main {
         SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB0");
 
 
-        comPort.setBaudRate(600);
+        comPort.setBaudRate(3600);
         comPort.setParity(SerialPort.NO_PARITY);
         comPort.setNumDataBits(8);
         comPort.openPort();
         System.out.println("Is port opened: " + comPort.isOpen());
-         comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING, 0, 0);
         InputStream in = comPort.getInputStream();
         try {
             for (int j = 0; j < 1000; ++j)
