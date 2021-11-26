@@ -16,7 +16,7 @@ public class Main {
 
 
        // SerialPort comPort = SerialPort.getCommPorts()[0];
-        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB1");
+        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB0");
 
         // 9600 19200 38400
 
@@ -27,8 +27,6 @@ public class Main {
             while (true)
             {
                 while (comPort.bytesAvailable() == 0) {
-                    Thread.sleep(20);
-                    System.out.println("Nopr");
                     Thread.sleep(20);
                 }
 
