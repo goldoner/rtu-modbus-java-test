@@ -1,8 +1,4 @@
-import com.fazecast.jSerialComm.SerialPort;
 import de.re.easymodbus.modbusclient.ModbusClient;
-
-import java.io.InputStream;
-import java.util.Arrays;
 
 public class Main {
 
@@ -17,10 +13,10 @@ public class Main {
 //
 
         // SerialPort comPort = SerialPort.getCommPorts()[0];
-        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB0");
-        comPort.setBaudRate(9600);
-        comPort.setParity(SerialPort.NO_PARITY);
-        comPort.setNumStopBits(SerialPort.ONE_STOP_BIT);
+//        SerialPort comPort = SerialPort.getCommPort("/dev/ttyUSB0");
+//        comPort.setBaudRate(9600);
+//        comPort.setParity(SerialPort.NO_PARITY);
+//        comPort.setNumStopBits(SerialPort.ONE_STOP_BIT);
 //
 //        // 9600 19200 38400
 //
