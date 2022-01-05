@@ -1,28 +1,4 @@
-import de.re.easymodbus.modbusclient.ModbusClient;
-
-
-import de.re.easymodbus.exceptions.ConnectionException;
-import de.re.easymodbus.exceptions.FunctionCodeNotSupportedException;
-import de.re.easymodbus.exceptions.ModbusException;
-import de.re.easymodbus.exceptions.QuantityInvalidException;
-import de.re.easymodbus.exceptions.StartingAddressInvalidException;
-import gnu.io.CommPort;
-import gnu.io.CommPortIdentifier;
-import gnu.io.SerialPort;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import de.re.easymodbus.modbusclient.*;
 
 public class Main {
 
@@ -68,16 +44,25 @@ public class Main {
 
 
         ModbusClient modbusClient = new ModbusClient();
-        modbusClient.Connect("/dev/ttyUSB0");
-        System.out.println("Is connected with default parameters : " + modbusClient.isConnected());
+        try {
+            modbusClient.Connect("/dev/ttyUSB0");
+            System.out.println(modbusClient.ReadHoldingRegisters(0, 1)[0]);
+            System.out.println(ModbusClient.ConvertRegistersToFloat(modbusClient.ReadHoldingRegisters(1000, 3)));
+        } catch (Exception e) {
 
-        System.out.println((float) modbusClient.ReadHoldingRegisters(4024, 1)[0]);
+        }
 
 
-
-        System.out.println((float) modbusClient.ReadHoldingRegisters(1000, 3)[0]);
-
-        System.out.println();
+//        ModbusClient modbusClient = new ModbusClient();
+//        modbusClient.Connect("/dev/ttyUSB0");
+//        System.out.println("Is connected with default parameters : " + modbusClient.isConnected());
+//
+//        System.out.println((float) modbusClient.ReadHoldingRegisters(4024, 1)[0]);
+//
+//
+//        System.out.println((float) modbusClient.ReadHoldingRegisters(1000, 3)[0]);
+//
+//        System.out.println();
 
 //        modbusClient.Disconnect();
     }
