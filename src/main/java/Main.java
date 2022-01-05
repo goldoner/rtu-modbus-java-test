@@ -46,6 +46,7 @@ public class Main {
         ModbusClient modbusClient = new ModbusClient();
         try {
             modbusClient.Connect("/dev/ttyUSB0");
+            modbusClient.Connect();
             System.out.println(modbusClient.ReadHoldingRegisters(0, 1)[0]);
             System.out.println(ModbusClient.ConvertRegistersToFloat(modbusClient.ReadHoldingRegisters(1000, 3)));
         } catch (Exception e) {
